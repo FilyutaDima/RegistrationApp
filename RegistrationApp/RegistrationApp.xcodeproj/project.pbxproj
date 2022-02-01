@@ -7,23 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE17554627A6920B0025E194 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17554527A6920B0025E194 /* Styles.swift */; };
+		CE17554B27A6D41B0025E194 /* VerificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17554A27A6D41B0025E194 /* VerificationService.swift */; };
+		CE17554E27A90A910025E194 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17554D27A90A910025E194 /* User.swift */; };
 		CE200D0927A53B95003D502C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE200D0827A53B95003D502C /* AppDelegate.swift */; };
 		CE200D0B27A53B95003D502C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE200D0A27A53B95003D502C /* SceneDelegate.swift */; };
-		CE200D0D27A53B95003D502C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE200D0C27A53B95003D502C /* ViewController.swift */; };
-		CE200D1027A53B95003D502C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE200D0E27A53B95003D502C /* Main.storyboard */; };
 		CE200D1227A53B9E003D502C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE200D1127A53B9E003D502C /* Assets.xcassets */; };
 		CE200D1527A53B9E003D502C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE200D1327A53B9E003D502C /* LaunchScreen.storyboard */; };
+		CE200D1D27A53CEA003D502C /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE200D1C27A53CEA003D502C /* SignInVC.swift */; };
+		CE200D1F27A53D11003D502C /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE200D1E27A53D11003D502C /* CreateAccountVC.swift */; };
+		CE200D2127A53D3C003D502C /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE200D2027A53D3C003D502C /* WelcomeVC.swift */; };
+		CE200D2327A53DAA003D502C /* CodeVerifVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE200D2227A53DAA003D502C /* CodeVerifVC.swift */; };
+		CE200D2927A53E6C003D502C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE200D2827A53E6C003D502C /* Constants.swift */; };
+		CE200D2D27A53EE5003D502C /* SignInStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE200D2C27A53EE5003D502C /* SignInStoryboard.storyboard */; };
+		CE200D2F27A53EF8003D502C /* SignUpStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE200D2E27A53EF8003D502C /* SignUpStoryboard.storyboard */; };
+		CE200D3127A53F13003D502C /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE200D3027A53F13003D502C /* MainStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE17554527A6920B0025E194 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
+		CE17554A27A6D41B0025E194 /* VerificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerificationService.swift; sourceTree = "<group>"; };
+		CE17554D27A90A910025E194 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CE200D0527A53B95003D502C /* RegistrationApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RegistrationApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE200D0827A53B95003D502C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE200D0A27A53B95003D502C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CE200D0C27A53B95003D502C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CE200D0F27A53B95003D502C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE200D1127A53B9E003D502C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE200D1427A53B9E003D502C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE200D1627A53B9E003D502C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE200D1C27A53CEA003D502C /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
+		CE200D1E27A53D11003D502C /* CreateAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVC.swift; sourceTree = "<group>"; };
+		CE200D2027A53D3C003D502C /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
+		CE200D2227A53DAA003D502C /* CodeVerifVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeVerifVC.swift; sourceTree = "<group>"; };
+		CE200D2827A53E6C003D502C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CE200D2C27A53EE5003D502C /* SignInStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignInStoryboard.storyboard; sourceTree = "<group>"; };
+		CE200D2E27A53EF8003D502C /* SignUpStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpStoryboard.storyboard; sourceTree = "<group>"; };
+		CE200D3027A53F13003D502C /* MainStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +55,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE17554927A6D39A0025E194 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CE17554A27A6D41B0025E194 /* VerificationService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CE17554C27A909FF0025E194 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE17554D27A90A910025E194 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		CE200CFC27A53B95003D502C = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +90,72 @@
 		CE200D0727A53B95003D502C /* RegistrationApp */ = {
 			isa = PBXGroup;
 			children = (
-				CE200D0827A53B95003D502C /* AppDelegate.swift */,
-				CE200D0A27A53B95003D502C /* SceneDelegate.swift */,
-				CE200D0C27A53B95003D502C /* ViewController.swift */,
-				CE200D0E27A53B95003D502C /* Main.storyboard */,
-				CE200D1127A53B9E003D502C /* Assets.xcassets */,
-				CE200D1327A53B9E003D502C /* LaunchScreen.storyboard */,
+				CE17554C27A909FF0025E194 /* Models */,
+				CE17554927A6D39A0025E194 /* Services */,
+				CE200D2427A53DBB003D502C /* Controllers */,
+				CE200D2B27A53EB1003D502C /* Views */,
+				CE200D2727A53E1A003D502C /* App */,
+				CE200D2A27A53E81003D502C /* Sources */,
 				CE200D1627A53B9E003D502C /* Info.plist */,
 			);
 			path = RegistrationApp;
+			sourceTree = "<group>";
+		};
+		CE200D2427A53DBB003D502C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CE200D2527A53DCF003D502C /* SignInControllers */,
+				CE200D2627A53E02003D502C /* SignUpControllers */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CE200D2527A53DCF003D502C /* SignInControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CE200D1C27A53CEA003D502C /* SignInVC.swift */,
+			);
+			path = SignInControllers;
+			sourceTree = "<group>";
+		};
+		CE200D2627A53E02003D502C /* SignUpControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CE200D1E27A53D11003D502C /* CreateAccountVC.swift */,
+				CE200D2027A53D3C003D502C /* WelcomeVC.swift */,
+				CE200D2227A53DAA003D502C /* CodeVerifVC.swift */,
+			);
+			path = SignUpControllers;
+			sourceTree = "<group>";
+		};
+		CE200D2727A53E1A003D502C /* App */ = {
+			isa = PBXGroup;
+			children = (
+				CE200D0827A53B95003D502C /* AppDelegate.swift */,
+				CE200D0A27A53B95003D502C /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		CE200D2A27A53E81003D502C /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				CE200D1127A53B9E003D502C /* Assets.xcassets */,
+				CE200D2827A53E6C003D502C /* Constants.swift */,
+				CE17554527A6920B0025E194 /* Styles.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		CE200D2B27A53EB1003D502C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE200D1327A53B9E003D502C /* LaunchScreen.storyboard */,
+				CE200D2C27A53EE5003D502C /* SignInStoryboard.storyboard */,
+				CE200D2E27A53EF8003D502C /* SignUpStoryboard.storyboard */,
+				CE200D3027A53F13003D502C /* MainStoryboard.storyboard */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,8 +217,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE200D1527A53B9E003D502C /* LaunchScreen.storyboard in Resources */,
+				CE200D3127A53F13003D502C /* MainStoryboard.storyboard in Resources */,
+				CE200D2F27A53EF8003D502C /* SignUpStoryboard.storyboard in Resources */,
 				CE200D1227A53B9E003D502C /* Assets.xcassets in Resources */,
-				CE200D1027A53B95003D502C /* Main.storyboard in Resources */,
+				CE200D2D27A53EE5003D502C /* SignInStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +231,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE200D0D27A53B95003D502C /* ViewController.swift in Sources */,
 				CE200D0927A53B95003D502C /* AppDelegate.swift in Sources */,
+				CE200D1D27A53CEA003D502C /* SignInVC.swift in Sources */,
+				CE17554B27A6D41B0025E194 /* VerificationService.swift in Sources */,
+				CE200D2127A53D3C003D502C /* WelcomeVC.swift in Sources */,
+				CE17554627A6920B0025E194 /* Styles.swift in Sources */,
+				CE200D2327A53DAA003D502C /* CodeVerifVC.swift in Sources */,
+				CE200D2927A53E6C003D502C /* Constants.swift in Sources */,
+				CE200D1F27A53D11003D502C /* CreateAccountVC.swift in Sources */,
+				CE17554E27A90A910025E194 /* User.swift in Sources */,
 				CE200D0B27A53B95003D502C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,14 +247,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CE200D0E27A53B95003D502C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CE200D0F27A53B95003D502C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CE200D1327A53B9E003D502C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -294,7 +386,7 @@
 				INFOPLIST_FILE = RegistrationApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = SignInStoryboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -322,7 +414,7 @@
 				INFOPLIST_FILE = RegistrationApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = SignInStoryboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
