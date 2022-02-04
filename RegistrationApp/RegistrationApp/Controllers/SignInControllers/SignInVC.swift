@@ -14,9 +14,11 @@ class SignInVC: UIViewController {
         super.viewDidLoad()
         
         initViews()
-        initKeyboard()
+        initKeyboardObserver()
+        hideKeyboardWhenTappedAround()
     }
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet private final weak var createAccountButton: UIButton!
     @IBOutlet private final weak var dataEntryAreaStackView: UIStackView!
     @IBOutlet private final weak var emailTextField: UITextField!
@@ -26,10 +28,11 @@ class SignInVC: UIViewController {
     @IBOutlet private final weak var errorLabel: UILabel!
     
     @IBAction func signInPressed(_ sender: Any) {
-        if !Constants.isContaints(value: emailTextField.text ?? "", key: .email),
-           !Constants.isContaints(value: passwordTextField.text ?? "", key: .password) {
+        if !Storage.isContaints(value: emailTextField.text ?? "", key: .email),
+           !Storage.isContaints(value: passwordTextField.text ?? "", key: .password) {
             errorLabel.isHidden = false
-            
+        } else {
+            performSegue(withIdentifier: "goToHomePage", sender: nil)
         }
     }
     
@@ -39,7 +42,6 @@ class SignInVC: UIViewController {
     
     @IBAction func passwordTextFieldChanged(_ sender: Any) {
         errorLabel.isHidden = true
-        
     }
     
     @IBAction func goToCreateAccountVC() {
@@ -52,19 +54,17 @@ class SignInVC: UIViewController {
     
     @objc func keyboardWillShow(notification: Notification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
-            }
+            let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+            scrollView.contentInset = contentInsets
+            scrollView.scrollIndicatorInsets = contentInsets
         }
 
     }
 
     @objc func keyboardWillHide(notification: Notification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0 {
-                self.view.frame.origin.y += keyboardSize.height
-            }
-        }
+        let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
     }
     
     private func initViews() {
@@ -77,8 +77,10 @@ class SignInVC: UIViewController {
         Styles.applyButtonStyleWithoutBackground(to: createAccountButton)
     }
     
-    private func initKeyboard() {
+    private func initKeyboardObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(SignInVC.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(SignInVC.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+    
+    @IBAction func unwindToFirstVC(_ unwindSegue: UIStoryboardSegue) { }
 }

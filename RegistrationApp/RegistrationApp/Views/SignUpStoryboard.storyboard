@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ffo-Nn-woP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ffo-Nn-woP">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -208,6 +208,7 @@
                         <outlet property="passwordErrorLabel" destination="JgU-rO-cpJ" id="gvM-fE-ujG"/>
                         <outlet property="passwordStrengthProgressView" destination="rtd-AN-5Il" id="hvb-s1-Y3R"/>
                         <outlet property="passwordTextField" destination="7B7-0M-UVy" id="GU5-6N-QZf"/>
+                        <outlet property="scrollView" destination="62a-Hq-h9O" id="XAO-fN-zhl"/>
                         <outlet property="signInButton" destination="fy6-rB-AO6" id="6Dh-xb-91X"/>
                         <outlet property="signUpButton" destination="0Bc-wL-pXu" id="0yr-EB-RVn"/>
                         <outlet property="titleLabel" destination="Oql-1P-XfC" id="eCE-ad-WvX"/>
@@ -267,7 +268,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MQk-7d-IOd">
                                         <rect key="frame" x="25.333333333333343" y="199" width="336" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <connections>
                                             <action selector="enteredCode:" destination="GNM-EN-GGO" eventType="editingChanged" id="SQ0-8w-uM5"/>
                                         </connections>
@@ -286,6 +287,9 @@
                     </view>
                     <connections>
                         <outlet property="randomCodeLabel" destination="ubX-gq-Sc1" id="xOE-SM-FPe"/>
+                        <outlet property="textField" destination="MQk-7d-IOd" id="dsq-Pb-hza"/>
+                        <outlet property="textLabel" destination="ubX-gq-Sc1" id="cCA-6K-3XU"/>
+                        <outlet property="titleLabel" destination="Hnv-Va-Ath" id="Aa1-gu-bs3"/>
                         <segue destination="Grd-RL-F29" kind="presentation" identifier="goToWelcomeVC" id="7PD-iC-JMm"/>
                     </connections>
                 </viewController>
@@ -317,6 +321,9 @@
                                 <rect key="frame" x="25" y="643" width="325" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Continue"/>
+                                <connections>
+                                    <action selector="continueButtonPressed" destination="Grd-RL-F29" eventType="touchUpInside" id="U5b-FF-B3S"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FaB-rc-Afs"/>
@@ -333,8 +340,15 @@
                             <constraint firstItem="FaB-rc-Afs" firstAttribute="trailing" secondItem="gRs-Xf-kKI" secondAttribute="trailing" constant="25" id="q8Z-F9-evk"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="continueButton" destination="93W-sp-QTd" id="2F7-yQ-3DB"/>
+                        <outlet property="textLabel" destination="gRs-Xf-kKI" id="9Xm-Ka-lrZ"/>
+                        <outlet property="titleLabel" destination="zjG-6n-eqz" id="eiC-Pq-hfj"/>
+                        <segue destination="EN7-EP-SnJ" kind="unwind" identifier="unwindToFirstVC" unwindAction="unwindToFirstVC:" id="h6G-FD-BnX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gGO-bt-d2Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="EN7-EP-SnJ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2709.5999999999999" y="63.546798029556655"/>
         </scene>

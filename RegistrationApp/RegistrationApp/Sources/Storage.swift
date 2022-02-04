@@ -1,13 +1,13 @@
 //
-//  Constants.swift
+//  UserDefaults.swift
 //  RegistrationApp
 //
-//  Created by Dmitry on 29.01.22.
+//  Created by Dmitry on 3.02.22.
 //
 
 import Foundation
-
-class Constants {
+ 
+class Storage {
     
     enum UserData: String {
         case password = "Password"
@@ -23,7 +23,7 @@ class Constants {
         return UserDefaults.standard.string(forKey: key.rawValue) == value
     }
     
-    static func deleteUserInfo(){
-        
+    static func get(key: UserData) -> String? {
+        return UserDefaults.standard.string(forKey: key.rawValue)
     }
 }

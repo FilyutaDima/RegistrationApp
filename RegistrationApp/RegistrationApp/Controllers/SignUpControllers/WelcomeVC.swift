@@ -13,20 +13,33 @@ class WelcomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initViews()
     }
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var continueButton: UIButton!
     
     @IBAction func continueButtonPressed() {
         saveUser()
         goToRootVC()
     }
+    
     private func saveUser() {
         guard let user = user else { return }
-        Constants.set(value: user.email, key: .email)
-        Constants.set(value: user.password, key: .password)
-        Constants.set(value: user.name ?? "", key: .name)
+        Storage.set(value: user.email, key: .email)
+        Storage.set(value: user.password, key: .password)
+        Storage.set(value: user.name ?? "", key: .name)
     }
 
     private func goToRootVC() {
-        
+        performSegue(withIdentifier: "unwindToFirstVC", sender: nil)
+    }
+    
+    private func initViews() {
+        Styles.applyStyleRootView(to: view)
+        Styles.applyTitleLabelStyle(to: titleLabel)
+        Styles.applyTextLabelsStyle(to: [textLabel])
+        Styles.applyButtonEnabledStyle(to: continueButton)
     }
 }

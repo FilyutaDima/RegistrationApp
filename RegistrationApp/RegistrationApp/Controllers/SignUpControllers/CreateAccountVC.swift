@@ -7,15 +7,23 @@
 
 import UIKit
 
+enum Rules {
+    case email
+    case password
+    case mismatchPasswords
+}
+
 class CreateAccountVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         initViews()
-        initKeyboard()
+        initKeyboardObserver()
+        hideKeyboardWhenTappedAround()
     }
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet private final weak var titleLabel: UILabel!
     @IBOutlet private final var textLabels: [UILabel]!
     @IBOutlet private final weak var signInButton: UIButton!
@@ -30,11 +38,11 @@ class CreateAccountVC: UIViewController {
     @IBOutlet private final weak var passwordStrengthProgressView: UIProgressView!
     @IBOutlet private final weak var dataEntryAreaStackView: UIStackView!
     
-    private var rules = ["Email" : false, "Strong password" : false, "Mismatch passwords" : false] {
+    private var rules: [Rules: Bool] = [.email : false, .password: false, .mismatchPasswords : false] {
         didSet {
-            if rules["Email"] == true,
-                rules["Strong password"] == true,
-                rules["Mismatch passwords"] == true {
+            if rules[.email] == true,
+               rules[.password] == true,
+               rules[.mismatchPasswords] == true {
                 signUpButton.isEnabled = true
                 Styles.applyButtonEnabledStyle(to: signUpButton)
             } else {
@@ -44,63 +52,32 @@ class CreateAccountVC: UIViewController {
         }
     }
     
-    private func initViews() {
-        Styles.applyTitleLabelStyle(to: titleLabel)
-        Styles.applyTextLabelsStyle(to: textLabels)
-        Styles.applyButtonStyleWithoutBackground(to: signInButton)
-        Styles.applyTextFieldStyle(to: emailTextField)
-        Styles.applyTextFieldStyle(to: nameTextField)
-        Styles.applyTextFieldStyle(to: passwordTextField)
-        Styles.applyTextFieldStyle(to: confirmPasswordTextField)
-        Styles.applyButtonDisabledStyle(to: signUpButton)
-        Styles.applyStyleRootView(to: view)
-        Styles.applyStackViewStyle(to: dataEntryAreaStackView)
-        Styles.applyStyleProgressView(to: passwordStrengthProgressView)
-    }
-    
-    private func initKeyboard() {
-        NotificationCenter.default.addObserver(self, selector: #selector(SignInVC.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(SignInVC.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-    }
-    
     @IBAction func emailTextFieldChanged(_ sender: UITextField) {
         
         if VerificationService.isValidEmail(email: sender.text ?? "") {
             emailErrorLabel.isHidden = true
-            rules["Email"] = true
+            rules[.email] = true
         } else {
             emailErrorLabel.isHidden = false
-            rules["Email"] = false
+            rules[.email] = false
         }
     }
     
     @IBAction func passwordTextFieldChanged(_ sender: UITextField) {
-        let pass = sender.text ?? ""
+        let pass1 = sender.text ?? ""
+        let pass2 = confirmPasswordTextField.text ?? ""
         
-        if VerificationService.isLongPassword(pass: pass) {
+        if VerificationService.isLongPassword(pass: pass1) {
             passwordErrorLabel.isHidden = true
-            rules["Strong password"] = true
+            rules[.password] = true
         } else {
             passwordErrorLabel.isHidden = false
-            rules["Strong password"] = false
+            rules[.password] = false
         }
         
-        if pass.count >= 8 {
-            switch VerificationService.isValidPassword(pass: pass) {
-            case .veryWeak:
-                setProgress(strength: .veryWeak, color: .red)
-            case .weak:
-                setProgress(strength: .weak, color: .brown)
-            case .notVeryWeak:
-                setProgress(strength: .notVeryWeak, color: .yellow)
-            case .notVeryStrong:
-                setProgress(strength: .notVeryStrong, color: .blue)
-            case .strong:
-                setProgress(strength: .strong, color: .green)
-            }
-        } else {
-            resetProgress()
+        updatePasswordStrengthProgressView(with: pass1)
+        if pass2.count > 0 {
+            checkPasswordsMatch(pass1: pass1, pass2: pass2)
         }
     }
     
@@ -108,13 +85,7 @@ class CreateAccountVC: UIViewController {
         let pass1 = passwordTextField.text ?? ""
         let pass2 = sender.text ?? ""
         
-        if VerificationService.isPassConfirm(pass1: pass1, pass2: pass2) {
-            confirmPasswordErrorLabel.isHidden = true
-            rules["Mismatch passwords"] = true
-        } else {
-            confirmPasswordErrorLabel.isHidden = false
-            rules["Mismatch passwords"] = false
-        }
+        checkPasswordsMatch(pass1: pass1, pass2: pass2)
     }
     
     @IBAction func signInButtonPressed() {
@@ -139,7 +110,6 @@ class CreateAccountVC: UIViewController {
         }
     }
     
-    
     private func setProgress(strength: PasswordStrength, color: UIColor) {
         passwordStrengthProgressView.progress = strength.rawValue
         passwordStrengthProgressView.progressTintColor = color
@@ -151,18 +121,63 @@ class CreateAccountVC: UIViewController {
     
     @objc func keyboardWillShow(notification: Notification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
-            }
+            let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+            scrollView.contentInset = contentInsets
+            scrollView.scrollIndicatorInsets = contentInsets
         }
-
     }
 
     @objc func keyboardWillHide(notification: Notification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0 {
-                self.view.frame.origin.y += keyboardSize.height
+        let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
+    }
+    
+    private func initViews() {
+        Styles.applyTitleLabelStyle(to: titleLabel)
+        Styles.applyTextLabelsStyle(to: textLabels)
+        Styles.applyButtonStyleWithoutBackground(to: signInButton)
+        Styles.applyTextFieldStyle(to: emailTextField)
+        Styles.applyTextFieldStyle(to: nameTextField)
+        Styles.applyTextFieldStyle(to: passwordTextField)
+        Styles.applyTextFieldStyle(to: confirmPasswordTextField)
+        Styles.applyButtonDisabledStyle(to: signUpButton)
+        Styles.applyStyleRootView(to: view)
+        Styles.applyStackViewStyle(to: dataEntryAreaStackView)
+        Styles.applyStyleProgressView(to: passwordStrengthProgressView)
+    }
+    
+    private func updatePasswordStrengthProgressView(with password: String) {
+        if password.count >= 8 {
+            switch VerificationService.isValidPassword(pass: password) {
+            case .veryWeak:
+                setProgress(strength: .veryWeak, color: .red)
+            case .weak:
+                setProgress(strength: .weak, color: .brown)
+            case .notVeryWeak:
+                setProgress(strength: .notVeryWeak, color: .yellow)
+            case .notVeryStrong:
+                setProgress(strength: .notVeryStrong, color: .blue)
+            case .strong:
+                setProgress(strength: .strong, color: .green)
             }
+        } else {
+            resetProgress()
         }
+    }
+    
+    private func checkPasswordsMatch(pass1: String, pass2: String) {
+        if VerificationService.isPassConfirm(pass1: pass1, pass2: pass2) {
+            confirmPasswordErrorLabel.isHidden = true
+            rules[.mismatchPasswords] = true
+        } else {
+            confirmPasswordErrorLabel.isHidden = false
+            rules[.mismatchPasswords] = false
+        }
+    }
+    
+    private func initKeyboardObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(SignInVC.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SignInVC.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }

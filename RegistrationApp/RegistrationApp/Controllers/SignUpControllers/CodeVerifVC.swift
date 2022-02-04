@@ -14,11 +14,17 @@ class CodeVerifVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initViews()
         generateRandomCode()
-        
+        hideKeyboardWhenTappedAround()
     }
     
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var textLabel: UILabel!
+    
+    @IBOutlet weak var textField: UITextField!
     @IBOutlet private final weak var randomCodeLabel: UILabel!
+    
     @IBAction private final func enteredCode(_ sender: UITextField) {
         if let code1 = sender.text, let code2 = randomCodeLabel.text, code1.elementsEqual(code2) {
             goToWelcomeVC()
@@ -29,7 +35,7 @@ class CodeVerifVC: UIViewController {
         randomCodeLabel.text = String(Int.random(in: 100000...999999))
     }
     
-    @IBAction func goToWelcomeVC() {
+    private func goToWelcomeVC() {
         guard let user = user else {
             return
         }
@@ -43,5 +49,11 @@ class CodeVerifVC: UIViewController {
         {
             welcomeVC.user = user
         }
+    }
+
+    private func initViews() {
+        Styles.applyTitleLabelStyle(to: titleLabel)
+        Styles.applyTitleLabelStyle(to: textLabel)
+        Styles.applyTextFieldStyle(to: textField)
     }
 }

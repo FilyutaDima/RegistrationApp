@@ -18,10 +18,12 @@
 		CE200D1F27A53D11003D502C /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE200D1E27A53D11003D502C /* CreateAccountVC.swift */; };
 		CE200D2127A53D3C003D502C /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE200D2027A53D3C003D502C /* WelcomeVC.swift */; };
 		CE200D2327A53DAA003D502C /* CodeVerifVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE200D2227A53DAA003D502C /* CodeVerifVC.swift */; };
-		CE200D2927A53E6C003D502C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE200D2827A53E6C003D502C /* Constants.swift */; };
 		CE200D2D27A53EE5003D502C /* SignInStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE200D2C27A53EE5003D502C /* SignInStoryboard.storyboard */; };
 		CE200D2F27A53EF8003D502C /* SignUpStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE200D2E27A53EF8003D502C /* SignUpStoryboard.storyboard */; };
 		CE200D3127A53F13003D502C /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE200D3027A53F13003D502C /* MainStoryboard.storyboard */; };
+		CED6837027AC767E00FD5994 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6836F27AC767E00FD5994 /* UIViewControllerExtension.swift */; };
+		CED6837227AC796300FD5994 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6837127AC796200FD5994 /* Storage.swift */; };
+		CED6837527AC832B00FD5994 /* HomePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6837427AC832B00FD5994 /* HomePageVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,10 +40,12 @@
 		CE200D1E27A53D11003D502C /* CreateAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVC.swift; sourceTree = "<group>"; };
 		CE200D2027A53D3C003D502C /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
 		CE200D2227A53DAA003D502C /* CodeVerifVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeVerifVC.swift; sourceTree = "<group>"; };
-		CE200D2827A53E6C003D502C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CE200D2C27A53EE5003D502C /* SignInStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignInStoryboard.storyboard; sourceTree = "<group>"; };
 		CE200D2E27A53EF8003D502C /* SignUpStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpStoryboard.storyboard; sourceTree = "<group>"; };
 		CE200D3027A53F13003D502C /* MainStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		CED6836F27AC767E00FD5994 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		CED6837127AC796200FD5994 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		CED6837427AC832B00FD5994 /* HomePageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,7 @@
 		CE200D0727A53B95003D502C /* RegistrationApp */ = {
 			isa = PBXGroup;
 			children = (
+				CED6836E27AC764800FD5994 /* Extension */,
 				CE17554C27A909FF0025E194 /* Models */,
 				CE17554927A6D39A0025E194 /* Services */,
 				CE200D2427A53DBB003D502C /* Controllers */,
@@ -104,6 +109,7 @@
 		CE200D2427A53DBB003D502C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CED6837327AC830200FD5994 /* Pages */,
 				CE200D2527A53DCF003D502C /* SignInControllers */,
 				CE200D2627A53E02003D502C /* SignUpControllers */,
 			);
@@ -141,8 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				CE200D1127A53B9E003D502C /* Assets.xcassets */,
-				CE200D2827A53E6C003D502C /* Constants.swift */,
 				CE17554527A6920B0025E194 /* Styles.swift */,
+				CED6837127AC796200FD5994 /* Storage.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -156,6 +162,22 @@
 				CE200D3027A53F13003D502C /* MainStoryboard.storyboard */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		CED6836E27AC764800FD5994 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CED6836F27AC767E00FD5994 /* UIViewControllerExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		CED6837327AC830200FD5994 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				CED6837427AC832B00FD5994 /* HomePageVC.swift */,
+			);
+			path = Pages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,13 +255,15 @@
 			files = (
 				CE200D0927A53B95003D502C /* AppDelegate.swift in Sources */,
 				CE200D1D27A53CEA003D502C /* SignInVC.swift in Sources */,
+				CED6837527AC832B00FD5994 /* HomePageVC.swift in Sources */,
 				CE17554B27A6D41B0025E194 /* VerificationService.swift in Sources */,
 				CE200D2127A53D3C003D502C /* WelcomeVC.swift in Sources */,
 				CE17554627A6920B0025E194 /* Styles.swift in Sources */,
 				CE200D2327A53DAA003D502C /* CodeVerifVC.swift in Sources */,
-				CE200D2927A53E6C003D502C /* Constants.swift in Sources */,
 				CE200D1F27A53D11003D502C /* CreateAccountVC.swift in Sources */,
+				CED6837227AC796300FD5994 /* Storage.swift in Sources */,
 				CE17554E27A90A910025E194 /* User.swift in Sources */,
+				CED6837027AC767E00FD5994 /* UIViewControllerExtension.swift in Sources */,
 				CE200D0B27A53B95003D502C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
